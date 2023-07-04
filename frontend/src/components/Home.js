@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-import {Row, Col,} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import Movie from './Movie';
 
 
@@ -19,23 +19,22 @@ const Home = () => {
     }, []);
     
   return (
-    <div className='d-flex justify-content-start'>
+    <Fragment>
         Home
-        <Row className='d-flex justify-content-start'>
-            {arr.map((item, index) => {
-                return (
-                <Col className='d-flex justify-content-start' key={item.episode_id} sm={12} md={6} lg={4} xl={3}>
-                    <Movie  
+        <Row>   
+            {arr.map((item, index) => (
+            <Col sm={12} md={6} lg={4} xl={3} >
+                    <Movie
                     title={item.title}
-                    episode_id={item.episode_id}
                     image={item.image}
-                    opening_crawl={item.opening_crawl}
-                    characters={item.characters}
+                    storyline={item.storyline}
+                    rating={item.rating}
+                    numReviews={item.numReviews}
                     />
-                </Col>);
-            })}
+                </Col>
+                ))}
         </Row>
-    </div>
+    </Fragment>
   )
 }
 
